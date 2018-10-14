@@ -7,7 +7,7 @@
                         <p>{{tweet.created_at}}</p>
                     </div>
                     <div class="col">
-                        <p class="test pb-2">{{tweet.text}}</p>
+                        <p class="test pb-2" style="margin: 0px">{{tweet.text}}</p>
                         <div class="tweet-img" v-if="tweet.link_text && tweet.photo_link_text">
                             <v-hover>
                                 <div slot-scope="{ hover }" :class="`elevation-${hover ? 12 : 2}`" class="mx-auto">
@@ -20,12 +20,12 @@
                         </div>
                         <p class="pr-1 title-color hashtag" v-for="hash in tweet.entities.hashtags">#{{hash}}</p>
                         <div style="clear: both"></div>
-                        <p class="not-show title-color">{{tweet.created_at}}</p>
+                        <p class="not-show title-color" style="margin: 0px">{{tweet.created_at}}</p>
                         <div class="light-box-img">
-                        <lightbox width="200" :images=tweet.media_image></lightbox>
+                            <lightbox width="200" :images=tweet.media_image></lightbox>
                         </div>
                         <div class="row social pt-1" @click="toTweet(tweet.id)">
-                            <div class="col"><i class="far fa-comments"></i> Comment</div>
+                            <div class="col"><i class="far fa-comments"></i><span class="static"> Comment</span></div>
                             <div class="col"><i class="fas fa-retweet"></i> {{tweet.retweet_count}}</div>
                             <div class="col"><i class="far fa-heart"></i> {{tweet.favorite_count}}</div>
                         </div>
@@ -39,9 +39,16 @@
 <script>
     export default {
         name: "TweetDetails",
-        props: {
+        components: {},
+        data() {
+            return {}
+        },
+        props:{
             data: Array,
             tweet: Object,
+        },
+        computed: {
+
         },
         methods: {
             toTweet(id) {
@@ -54,17 +61,21 @@
     };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
+    @media only screen and (max-width: 575px) {
+        .social {
+            text-align: center;
+        }
+    }
     @media only screen and (min-width: 576px) {
         .not-show {
             display: none;
         }
+        .social {
+            cursor: pointer;
+        }
     }
-
-    .social {
-        cursor: pointer;
-        font-size: 12px;
-        text-align: center;
+    p{
+        margin: 0px;
     }
 </style>

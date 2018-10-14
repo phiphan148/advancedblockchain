@@ -10,7 +10,6 @@
 </template>
 
 <script>
-    // import TweetComponent from "../components/TweeComponent";
     import TweetDetails from "../components/TweetDetails";
     import Banner from "../components/Banner";
     export default {

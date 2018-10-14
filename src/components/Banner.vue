@@ -9,29 +9,38 @@
         <div>
             <div class="row pt-1">
                 <div class="col-2 col-sm-2"></div>
-                <div class="col-8 col-sm-9"><p>{{infoData.screen_name}}</p></div>
+                <div class="col-8 col-sm-9"><p style="margin: 0px">{{infoData.screen_name}}</p></div>
             </div>
-            <div class="row pb-1 pt-2 static">
-                <div class="col-6 col-sm-3">
-                    <i class="fab fa-twitter title-color"></i><span> {{infoData.tweets_count}}</span>
-                </div>
-                <div class="col-6 col-sm-3">
-                    <i class="far fa-heart title-color"></i><span> {{infoData.likes_count}}</span>
-                </div>
-                <div class="col-6 col-sm-3">
-                    <p style="margin: 0px"><span class="font-weight-bold title-color">Following</span> {{infoData.followings_count}}</p>
-                </div>
-                <div class="col-6 col-sm-3">
-                    <p style="margin: 0px"><span class="font-weight-bold title-color">Followers</span> {{infoData.followers_count}}</p>
+            <div class="row pb-1 pt-2">
+                <div class="col-1 col-sm-2 static"></div>
+                <div class="row col-11 col-sm-10 infomation">
+                    <div class="col-6 col-sm-3">
+                        <i class="fab fa-twitter title-color"></i><span> {{infoData.tweets_count}}</span>
+                    </div>
+                    <div class="col-6 col-sm-3">
+                        <i class="far fa-heart title-color"></i><span> {{infoData.likes_count}}</span>
+                    </div>
+                    <div class="col-6 col-sm-3">
+                        <p style="margin: 0px"><span class="font-weight-bold title-color">Following</span>
+                            {{infoData.followings_count}}</p>
+                    </div>
+                    <div class="col-6 col-sm-3">
+                        <p style="margin: 0px"><span class="font-weight-bold title-color">Followers</span>
+                            {{infoData.followers_count}}</p>
+                    </div>
                 </div>
             </div>
-            <div id="summary" class="infomation pb-2">
-                <a class="collapsed title-color font-weight-bold" data-toggle="collapse" href="#collapseSummary" aria-expanded="false" aria-controls="collapseSummary"></a>
-                <div class="collapse" id="collapseSummary">
-                    <p>{{infoData.description}}</p>
-                    <div class="row">
-                        <p class="col-sm-6 col-12 title-color"><i class="fas fa-link pr-2"></i>{{infoData.url}}</p>
-                        <p class="col-sm-6 col-12"><i class="fas fa-map-marker-alt title-color pr-2"></i>{{infoData.location}}</p>
+            <div id="summary" class="pb-2 row">
+                <div class="col-1 col-sm-2"></div>
+                <div class="col col-sm-10">
+                    <a class="collapsed title-color font-weight-bold" data-toggle="collapse" href="#collapseSummary"
+                       aria-expanded="false" aria-controls="collapseSummary"></a>
+                    <div class="collapse" id="collapseSummary">
+                        <p>{{infoData.description}}</p>
+                        <div class="row">
+                            <p class="col-sm-6 col-12 title-color"><i class="fas fa-link pr-2"></i>{{infoData.url}}</p>
+                            <p class="col-sm-6 col-12"><i class="fas fa-map-marker-alt title-color pr-2"></i>{{infoData.location}}</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -51,36 +60,28 @@
                 return this.$store.state.info;
             }
         },
-        created() {
-            // this.test();
-        },
-        methods: {
-            // test(){
-            //   console.log(this.infoData.entities.url.urls)
-            // }
-        }
     };
 </script>
 
 <style>
+    @media only screen and (max-width: 576px) {
+        .static {
+            display: none;
+        }
+        .infomation{
+            margin: 0px auto;
+        }
+    }
+
     @media only screen and (min-width: 786px) and (max-width: 991px) {
         .banner {
             bottom: -20% !important;
-        }
-        .static {
-            width: 80% !important;
-            text-align: center!important;
         }
     }
 
     @media only screen and (min-width: 992px) {
         .prof {
             bottom: -25% !important;
-        }
-
-        .static {
-            width: 80% !important;
-            text-align: center!important;
         }
     }
 
@@ -121,16 +122,6 @@
         content: 'Less info';
     }
 
-    .static{
-        width: 100%;
-        margin: 0px auto;
-        text-align: center;
-    }
-
-    .infomation{
-        width: 81%;
-        margin: 0px auto;
-    }
     p {
         margin: 0px;
     }

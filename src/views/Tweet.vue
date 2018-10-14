@@ -24,8 +24,8 @@
                     <div class="light-box-img">
                         <lightbox width="200" :images=tweet.media_image></lightbox>
                     </div>
-                    <div class="row social pt-1 text-center">
-                        <div class="col"><i class="far fa-comments"></i> Comment
+                    <div class="row social pt-2 pb-2">
+                        <div class="col"><i class="far fa-comments"></i> <span class="static">Comment</span>
                         </div>
                         <!--<div class="col" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"-->
                         <!--aria-controls="collapseExample"><i class="far fa-comments"></i> Comment-->
@@ -46,7 +46,7 @@
                         <div class="col-9 col-sm-10 align-self-center speech-bubble-comment" style="margin: 0px">
                             <div class="row" style="padding: 10px">
                                 <p class="col-12">{{comment.mess}}</p>
-                                <div class="col-12">
+                                <div class="col-12 pt-1">
                                     <p class="title-color time">{{comment.time}} {{comment.date}}</p>
                                 </div>
                             </div>
@@ -191,6 +191,14 @@
         .light-box-img vue-lightbox ul li img {
             width: 100px !important;
         }
+
+        .static{
+            display: none;
+        }
+
+        .social{
+            text-align: center;
+        }
     }
 
     .speech-bubble img {
@@ -255,9 +263,5 @@
 
     .comment-user {
         border-radius: 50%;
-    }
-
-    p {
-        margin: 0px;
     }
 </style>
