@@ -49,7 +49,6 @@
                         <div class="row resetpass">
                             <input v-model="emailResetPass" placeholder="Type your email here" class="col-9 col-sm-10" type="text">
                             <button v-on:click="resetPass" class="info col-3 col-sm-2">Send</button>
-                            <p v-if="showmess" class="font-italic">We've sent you the reset password email</p>
                         </div>
                     </div>
                 </div>
@@ -73,7 +72,6 @@
                 emailLogIn: "",
                 passwordLogIn: "",
                 emailResetPass: '',
-                showmess: false,
             };
         },
         created() {
@@ -150,14 +148,13 @@
                 let auth = firebase.auth();
                 let emailAddress = this.emailResetPass;
                 if(emailAddress != ''){
-                auth.sendPasswordResetEmail(emailAddress).then(function () {
-                    // Email sent.
+                auth.sendPasswordResetEmail(emailAddress).then(function (){
+                   alert('We just sent you the reset password email');
                 }).catch((error) => {
-                    alert(error)
+                   alert(error)
                 });
                 }
                 this.emailResetPass = '';
-                this.showmess = true;
             }
         }
     };
