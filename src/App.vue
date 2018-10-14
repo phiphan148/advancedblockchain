@@ -7,7 +7,7 @@
             <v-list class="pa-0">
               <v-list-tile avatar>
                 <v-list-tile-avatar>
-                  <router-link to="/profile"><img :src=userProPhoto alt="prof img" class="img-fluid"></router-link>
+                  <router-link to="/profile"><img :src=userProPhoto alt="img" class="img-fluid"></router-link>
                 </v-list-tile-avatar>
                 <v-list-tile-content>
                   <router-link to="/profile">

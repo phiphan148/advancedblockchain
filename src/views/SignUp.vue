@@ -80,7 +80,7 @@
                                     });
                             }
                             alert(`Hi ${this.userName} Welcome to Advanced Blockchain application`)
-                            this.$router.push("/profile");
+                            this.$router.go("/");
                         })
                         .catch(function (error) {
                             let errorMessage = error.message;
