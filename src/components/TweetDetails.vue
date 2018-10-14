@@ -21,9 +21,17 @@
                         <p class="pr-1 title-color hashtag" v-for="hash in tweet.entities.hashtags">#{{hash}}</p>
                         <div style="clear: both"></div>
                         <p class="not-show title-color" style="margin: 0px">{{tweet.created_at}}</p>
-                        <div class="light-box-img">
-                            <lightbox width="200" :images=tweet.media_image></lightbox>
+                        <div class="row">
+                            <div class="popUp col-5" v-for="img in tweet.media_image">
+                                <img @click="modalPop(img)" class="img-fuild " :src=img.src alt="img">
+                            </div>
+                            <modal v-if="showModal" @close="showModal = false">
+                                <div slot="header">
+                                    <img class="card-image img-fluid" style="position: relative" :src="modalDetail" alt="cover">
+                                </div>
+                            </modal>
                         </div>
+
                         <div class="row social pt-1" @click="toTweet(tweet.id)">
                             <div class="col"><i class="far fa-comments"></i><span class="static"> Comment</span></div>
                             <div class="col"><i class="fas fa-retweet"></i> {{tweet.retweet_count}}</div>
@@ -37,26 +45,32 @@
 </template>
 
 <script>
+    import modal from './modal.vue';
+
     export default {
         name: "TweetDetails",
-        components: {},
+        components: {modal},
         data() {
-            return {}
+            return {
+                showModal: false,
+            }
         },
-        props:{
+        props: {
             data: Array,
             tweet: Object,
         },
-        computed: {
-
-        },
+        computed: {},
         methods: {
             toTweet(id) {
                 this.$store.commit('tweetId', id);
                 console.log(this.$store.state.id);
                 console.log(typeof this.$store.state.id);
                 this.$router.push('/tweet');
-            }
+            },
+            modalPop(item) {
+                this.showModal = true;
+                this.modalDetail = item.src;
+            },
         }
     };
 </script>
@@ -67,15 +81,22 @@
             text-align: center;
         }
     }
+
     @media only screen and (min-width: 576px) {
         .not-show {
             display: none;
         }
+
         .social {
             cursor: pointer;
         }
     }
-    p{
+
+    p {
         margin: 0px;
+    }
+
+    .popUp img {
+        width: 100%;
     }
 </style>

@@ -16,7 +16,9 @@
         name: "Home",
         components: {TweetDetails, Banner},
         data() {
-            return {}
+            return {
+
+            }
         },
         computed: {
             mainData() {

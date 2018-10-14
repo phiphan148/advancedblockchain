@@ -21,8 +21,15 @@
                     <p class="pr-1 title-color hashtag" v-for="hash in tweet.entities.hashtags">#{{hash}}</p>
                     <div style="clear: both"></div>
                     <p class="not-show title-color">{{tweet.created_at}}</p>
-                    <div class="light-box-img">
-                        <lightbox width="200" :images=tweet.media_image></lightbox>
+                    <div class="row">
+                        <div class="popUp col-5" v-for="img in tweet.media_image">
+                            <img @click="modalPop(img)" class="img-fuild " :src=img.src alt="img">
+                        </div>
+                        <modal v-if="showModal" @close="showModal = false">
+                            <div slot="header">
+                                <img class="card-image img-fluid" style="position: relative" :src="modalDetail" alt="cover">
+                            </div>
+                        </modal>
                     </div>
                     <div class="row social pt-2 pb-2">
                         <div class="col"><i class="far fa-comments"></i> <span class="static"> Comment</span></div>
@@ -88,12 +95,14 @@
 </template>
 
 <script>
+    import modal from '../components/modal.vue';
     export default {
         name: "Tweet",
-        components: {},
+        components: {modal},
         data() {
             return {
                 comments: {},
+                showModal: false,
                 inputTxt: '',
                 idClick: '',
                 newKeyPost: '',
@@ -168,7 +177,11 @@
                         }
                     });
                 })
-            }
+            },
+            modalPop(item) {
+                this.showModal = true;
+                this.modalDetail = item.src;
+            },
         }
     }
 </script>
@@ -200,7 +213,6 @@
     .speech-bubble img {
         width: 100%;
         height: 100%;
-        min-height: 80vh;
     }
 
     .speech-bubble {
@@ -213,36 +225,6 @@
         position: relative;
         background: #F5F5F5;
         border-radius: .4em;
-    }
-
-    .speech-bubble:after {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 20%;
-        width: 0;
-        height: 0;
-        border: 20px solid transparent;
-        border-right-color: #F5F5F5;
-        border-left: 0;
-        border-top: 0px;
-        margin-top: -10px;
-        margin-left: -20px;
-    }
-
-    .speech-bubble-comment:after {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 20%;
-        width: 0;
-        height: 0;
-        border: 20px solid transparent;
-        border-right-color: #F5F5F5;
-        border-left: 0;
-        border-top: 0px;
-        margin-top: -10px;
-        margin-left: -20px;
     }
 
     .details {
@@ -259,5 +241,9 @@
 
     .comment-user {
         border-radius: 50%;
+        border: 1px solid #dddddd;
+    }
+    p{
+        margin: 0px;
     }
 </style>
