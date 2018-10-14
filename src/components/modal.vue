@@ -23,6 +23,12 @@
 </script>
 
 <style scoped>
+    @media only screen and (max-width: 575px) {
+        .modal-container {
+            width: 100% !important;
+        }
+    }
+
     .modal-mask {
         position: fixed;
         z-index: 9998;
