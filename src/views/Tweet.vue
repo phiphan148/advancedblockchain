@@ -25,15 +25,11 @@
                         <lightbox width="200" :images=tweet.media_image></lightbox>
                     </div>
                     <div class="row social pt-2 pb-2">
-                        <div class="col"><i class="far fa-comments"></i> <span class="static">Comment</span>
-                        </div>
-                        <!--<div class="col" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"-->
-                        <!--aria-controls="collapseExample"><i class="far fa-comments"></i> Comment-->
-                        <!--</div>-->
+                        <div class="col"><i class="far fa-comments"></i> <span class="static"> Comment</span></div>
                         <div class="col"><i class="fas fa-retweet"></i> {{tweet.retweet_count}}</div>
                         <div class="col"><i class="far fa-heart"></i> {{tweet.favorite_count}}</div>
                     </div>
-                    <div class="row comment">
+                    <div class="row comment" id="collapseSummary">
                         <div class="card col-10"><input style="padding: 3px 0px" v-model="inputTxt" type="text"></div>
                         <div class="col-2" style="padding: 0px; color: white"><a v-on:click="addComment" class="btn btn-primary">Send</a>
                         </div>
