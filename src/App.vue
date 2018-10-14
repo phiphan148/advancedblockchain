@@ -188,6 +188,7 @@
 
   ul li {
     list-style: none;
+    padding: 0px;
   }
 
   p {
@@ -200,6 +201,8 @@
 
   a {
     color: #108EC8;
+    margin: 0px;
+    padding: 0px;
   }
 
   a:hover {

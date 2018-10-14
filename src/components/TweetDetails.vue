@@ -21,10 +21,9 @@
                         <p class="pr-1 title-color hashtag" v-for="hash in tweet.entities.hashtags">#{{hash}}</p>
                         <div style="clear: both"></div>
                         <p class="not-show title-color">{{tweet.created_at}}</p>
-
-                        <!--<div class="light-box-img">-->
-                        <!--<lightbox width="200" :images=tweet.media_image></lightbox>-->
-                        <!--</div>-->
+                        <div class="light-box-img">
+                        <lightbox width="200" :images=tweet.media_image></lightbox>
+                        </div>
                         <div class="row social pt-1" @click="toTweet(tweet.id)">
                             <div class="col"><i class="far fa-comments"></i> Comment</div>
                             <div class="col"><i class="fas fa-retweet"></i> {{tweet.retweet_count}}</div>

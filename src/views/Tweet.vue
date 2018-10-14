@@ -21,9 +21,9 @@
                     <p class="pr-1 title-color hashtag" v-for="hash in tweet.entities.hashtags">#{{hash}}</p>
                     <div style="clear: both"></div>
                     <p class="not-show title-color">{{tweet.created_at}}</p>
-                    <!--<div class="light-box-img">-->
-                        <!--<lightbox width="200" :images=tweet.media_image></lightbox>-->
-                    <!--</div>-->
+                    <div class="light-box-img">
+                        <lightbox width="200" :images=tweet.media_image></lightbox>
+                    </div>
                     <div class="row social pt-1 text-center">
                         <div class="col"><i class="far fa-comments"></i> Comment
                         </div>
@@ -46,7 +46,7 @@
                         <div class="col-9 col-sm-10 align-self-center speech-bubble-comment" style="margin: 0px">
                             <div class="row" style="padding: 10px">
                                 <p class="col-12">{{comment.mess}}</p>
-                                <div class="col-12 pt-1">
+                                <div class="col-12">
                                     <p class="title-color time">{{comment.time}} {{comment.date}}</p>
                                 </div>
                             </div>
@@ -70,10 +70,10 @@
                                         </div>
                                         <p class="pr-1 title-color hashtag" v-for="hash in retweet.entities.hashtags">#{{hash}}</p>
                                         <div style="clear: both"></div>
-                                        <!--<div class="light-box-img">-->
-                                            <!--<lightbox :images=retweet.media_image>-->
-                                            <!--</lightbox>-->
-                                        <!--</div>-->
+                                        <div class="light-box-img">
+                                            <lightbox :images=retweet.media_image>
+                                            </lightbox>
+                                        </div>
                                         <div class="row social pt-1 text-center">
                                             <div class="col"><i class="far fa-comments"></i></div>
                                             <div class="col"><i class="fas fa-retweet"></i> {{retweet.retweet_count}}</div>
@@ -255,5 +255,9 @@
 
     .comment-user {
         border-radius: 50%;
+    }
+
+    p {
+        margin: 0px;
     }
 </style>

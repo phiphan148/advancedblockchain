@@ -3,7 +3,6 @@
     <v-container fluid grid-list-lg>
       <Banner></Banner>
       <div v-for="(tweet, index) in mainData" :key="index">
-        <!--<TweetComponent v-bind:tweet="tweet"></TweetComponent>-->
         <TweetDetails v-bind:tweet="tweet"></TweetDetails>
       </div>
     </v-container>
@@ -37,3 +36,9 @@
         }
     };
 </script>
+
+<style>
+  p {
+    margin: 0px;
+  }
+</style>

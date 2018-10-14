@@ -11,7 +11,7 @@
                 <div class="col-2 col-sm-2"></div>
                 <div class="col-8 col-sm-9"><p>{{infoData.screen_name}}</p></div>
             </div>
-            <div class="row pb-2 pt-2 static">
+            <div class="row pb-1 pt-2 static">
                 <div class="col-6 col-sm-3">
                     <i class="fab fa-twitter title-color"></i><span> {{infoData.tweets_count}}</span>
                 </div>
@@ -19,10 +19,10 @@
                     <i class="far fa-heart title-color"></i><span> {{infoData.likes_count}}</span>
                 </div>
                 <div class="col-6 col-sm-3">
-                    <p><span class="font-weight-bold title-color">Following</span> {{infoData.followings_count}}</p>
+                    <p style="margin: 0px"><span class="font-weight-bold title-color">Following</span> {{infoData.followings_count}}</p>
                 </div>
                 <div class="col-6 col-sm-3">
-                    <p><span class="font-weight-bold title-color">Followers</span> {{infoData.followers_count}}</p>
+                    <p style="margin: 0px"><span class="font-weight-bold title-color">Followers</span> {{infoData.followers_count}}</p>
                 </div>
             </div>
             <div id="summary" class="infomation pb-2">
@@ -128,8 +128,10 @@
     }
 
     .infomation{
-        width: 80%;
+        width: 81%;
         margin: 0px auto;
     }
-
+    p {
+        margin: 0px;
+    }
 </style>
