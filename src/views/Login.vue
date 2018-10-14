@@ -3,7 +3,6 @@
         <div class="text-center">
             <div v-if="!login" class="pb-4">
                 <div class="align-self-center col content-box signUp">
-                    <!--<h4 class="text-left title-color font-weight-bold pb-3">SIGN UP</h4>-->
                     <div class="row pb-3">
                         <div class="col-3 align-self-center text-left">
                             <p>Email:<span class="text-danger">*</span></p>
@@ -19,13 +18,13 @@
                         <div class="col-9 align-self-center">
                             <p><input v-model="passwordLogIn" type="password" id="pass2"></p>
                             <div class="container row mt-1 show-pass">
-                                <input class="col-1 align-self-center pr-1" type="checkbox" v-on:click="checkPass('pass2')">Show password
-                                <!--<p class="col text-left align-self-center small-txt" style="padding:0px"></p>-->
+                                <input class="col-1 align-self-center pr-1" type="checkbox"
+                                       v-on:click="checkPass('pass2')">Show password
                             </div>
                         </div>
                     </div>
                     <div class="col text-center">
-                        <v-btn v-on:click="loginE" color="info">Login </v-btn>
+                        <v-btn v-on:click="loginE" color="info">Login</v-btn>
                     </div>
                 </div>
             </div>
@@ -34,8 +33,26 @@
                 <p style="text-transform: uppercase; font-weight: bold">Hi {{userNameLogin}}</p>
             </div>
             <div v-if="!login" class="signUp text-left row">
-                <p class="pb-2 col-12 col-sm-6"><i class="fab fa-twitter-square title-color pr-2"></i><router-link to="/profile" class="text-color"><span v-on:click="loginT">Login with Twitter</span></router-link></p>
-                <p class="pb-2 col-12 col-sm-6"><i class="fas fa-envelope title-color pr-2"></i><router-link to="/profile" class="text-color"><span v-on:click="loginG">Login with Gmail</span></router-link></p>
+                <p class="pb-2 col-12 col-sm-6"><i class="fab fa-twitter-square title-color pr-2"></i>
+                    <router-link to="/profile" class="text-color"><span v-on:click="loginT">Login with Twitter</span>
+                    </router-link>
+                </p>
+                <p class="pb-2 col-12 col-sm-6"><i class="fas fa-envelope title-color pr-2"></i>
+                    <router-link to="/profile" class="text-color"><span v-on:click="loginG">Login with Gmail</span>
+                    </router-link>
+                </p>
+                <div class="text-left col-12">
+                    <a class="collapsed title-color" data-toggle="collapse"
+                       href="#collapseEmail"
+                       aria-expanded="false" aria-controls="collapseSummary">Forget Password?</a>
+                    <div class="collapse" id="collapseEmail">
+                        <div class="row resetpass">
+                            <input v-model="emailResetPass" placeholder="Type your email here" class="col-9" type="text">
+                            <button v-on:click="resetPass" class="info col-3">Send</button>
+                            <p v-if="showmess" class="font-italic">We've sent you the reset password email</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div v-else class="pb-3">
                 <v-btn color="info">
@@ -55,6 +72,8 @@
                 userNameLogin: '',
                 emailLogIn: "",
                 passwordLogIn: "",
+                emailResetPass: '',
+                showmess: false,
             };
         },
         created() {
@@ -127,6 +146,19 @@
                     pass.type = "password";
                 }
             },
+            resetPass() {
+                let auth = firebase.auth();
+                let emailAddress = this.emailResetPass;
+                if(emailAddress != ''){
+                auth.sendPasswordResetEmail(emailAddress).then(function () {
+                    // Email sent.
+                }).catch((error) => {
+                    alert(error)
+                });
+                }
+                this.emailResetPass = '';
+                this.showmess = true;
+            }
         }
     };
 </script>
@@ -149,7 +181,7 @@
             width: 70% !important;
         }
 
-        .signUp{
+        .signUp {
             width: 90% !important;
         }
     }
@@ -174,18 +206,30 @@
         -webkit-ANIMATION-timing-function: linear;
     }
 
-    .signUp{
+    .signUp {
         width: 60%;
         margin: 0px auto;
         padding: 0px;
     }
 
-    .signUp input{
+    .signUp input {
         border: 1px solid #000;
         outline: none;
         width: 100%;
         border-radius: 3px;
         padding: 5px;
+    }
+
+    .resetpass input{
+        border: none !important;
+        border-bottom: 1px solid #000000 !important;
+        background: none;
+    }
+
+    .resetpass button{
+        color: white;
+        outline: none;
+        font-weight: bold;
     }
 
 </style>
