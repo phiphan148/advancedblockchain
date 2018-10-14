@@ -2,13 +2,12 @@
     <div>
         <transition name="modal">
             <div class="modal-mask">
-                <div class="modal-wrapper">
+                <div class="modal-wrapper" @click="$emit('close')">
                     <div class="modal-container">
                         <div class="modal-header">
                             <slot name="header">
                             </slot>
                         </div>
-                        <i class="far fa-times-circle close-img" @click="$emit('close')"></i>
                     </div>
                 </div>
             </div>
