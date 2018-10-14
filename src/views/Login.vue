@@ -47,8 +47,8 @@
                        aria-expanded="false" aria-controls="collapseSummary">Forget Password?</a>
                     <div class="collapse" id="collapseEmail">
                         <div class="row resetpass">
-                            <input v-model="emailResetPass" placeholder="Type your email here" class="col-9" type="text">
-                            <button v-on:click="resetPass" class="info col-3">Send</button>
+                            <input v-model="emailResetPass" placeholder="Type your email here" class="col-9 col-sm-10" type="text">
+                            <button v-on:click="resetPass" class="info col-3 col-sm-2">Send</button>
                             <p v-if="showmess" class="font-italic">We've sent you the reset password email</p>
                         </div>
                     </div>
@@ -224,12 +224,14 @@
         border: none !important;
         border-bottom: 1px solid #000000 !important;
         background: none;
+        border-radius: 0px;
     }
 
     .resetpass button{
         color: white;
         outline: none;
         font-weight: bold;
+        border-radius: 3px;
     }
 
 </style>
