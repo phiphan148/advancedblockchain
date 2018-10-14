@@ -182,10 +182,6 @@
     overflow: hidden;
   }
 
-  ul {
-    padding: 0px;
-  }
-
   ul li {
     list-style: none;
     padding: 0px;
