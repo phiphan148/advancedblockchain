@@ -29,6 +29,12 @@
         }
     }
 
+    @media only screen and (min-width: 991px) {
+        .modal-container {
+            width: 30% !important;
+        }
+    }
+
     .modal-mask {
         position: fixed;
         z-index: 9998;
