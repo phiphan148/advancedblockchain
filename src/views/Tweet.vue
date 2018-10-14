@@ -137,7 +137,6 @@
             addComment() {
                 firebase.auth().onAuthStateChanged(user => {
                     if (user) {
-                        this.$router.go('/tweet');
                         var userName = firebase.auth().currentUser.displayName;
                         var currentDate = new Date();
                         var date = [this.pad(currentDate.getDate()), this.pad(currentDate.getMonth() + 1), currentDate.getFullYear()].join('/');
@@ -152,6 +151,7 @@
                                 time: time,
                                 milionseconds: currentDate.getTime(),
                             });
+                            this.$router.go('/tweet');
                         }
                         this.inputTxt = '';
                     } else {
