@@ -62,7 +62,7 @@
       <router-view/>
     </v-content>
     <v-footer :fixed="fixed" app class="row">
-      <div class="col text-center pt-3">
+      <div class="col text-center align-self-center">
         <p>&copy; 2018</p>
       </div>
     </v-footer>
